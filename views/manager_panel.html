@@ -1,0 +1,56 @@
+<!--Filtering by group and shipper-->
+<select ng-model="group" ng-options="c.value for c in groups">
+    <option value="">-- Filter by group --</option>
+</select>
+
+<select ng-model="shipper" ng-options="s.value for s in shippers">
+    <option value="">-- Filter by shipper --</option>
+</select>
+<!--/Filtering by group and shipper-->
+
+<input type="text" ng-model='searchByName' placeholder="Searching by product's name">
+<button id="addNewProduct" class="btn btn-primary btn-block" ng-click="addNewProductPage()">Add new product</button>
+<table  class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>
+                <!--Arrows for ordering-->
+                <div ng-show="predicate=='count'">
+                    <i class="icon-chevron-up" ng-show="reverse"></i><i class="icon-chevron-down" ng-show="!reverse"></i>
+                </div>
+                <div ng-show="predicate!='count'">
+                    <i class="icon-chevron-up"></i><i class="icon-chevron-down"></i>
+                </div>
+                <!--/Arrows for ordering-->
+                <a href="javascript:void(0);" ng-click="predicate = 'count'; reverse=!reverse" ng-model="reverse">Count</a>
+            </th>
+            <th>
+                <!--Arrows for ordering-->
+                <div ng-show="predicate=='cost'">
+                    <i class="icon-chevron-up" ng-show="reverse"></i><i class="icon-chevron-down" ng-show="!reverse"></i>
+                </div>
+                <div ng-show="predicate!='cost'">
+                    <i class="icon-chevron-up"></i><i class="icon-chevron-down"></i>
+                </div>
+                <!--/Arrows for ordering-->
+                <a href='javascript:void(0);' ng-click="predicate = 'cost'; reverse=!reverse">Cost</a>
+            </th>
+            <th>Group</th>
+            <th>Shipper</th>
+            <th width='25px'></th>
+            <th width='25px'></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="repeat-item" ng-repeat="product in products | orderBy:predicate:reverse | filter:group.text | filter:shipper.text | filter:searchByName">
+            <td><span ng-bind="product.name"></span></td>
+            <td><span ng-bind="product.count | number"></span></td>
+            <td><span ng-bind="product.cost | currency"></span>$</td>
+            <td><span ng-bind="product.group"></span></td>
+            <td><span ng-bind="product.shipper"></span></td>
+            <td><i ng-click='editProduct(product.id)' class='icon-edit'></i></td>
+            <td><i ng-click='removeProduct(product.id, product.name, $index)' class='icon-trash'></i></td>
+        </tr>
+    </tbody>
+</table>

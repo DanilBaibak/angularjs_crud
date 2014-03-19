@@ -1,0 +1,21 @@
+<form name="LovelyForm" class="newProduct" ng-submit='addNewProduct()'>
+    <input type="text" ng-model="addProductForm.name" id="productName" name="name" placeholder="Product's name" required
+        data-unique="{property: 'name'}"
+    >
+    <span class="errorMessage" ng-show="LovelyForm.name.$dirty && LovelyForm.name.$error.unique">
+        The product with this name has already existed!
+    </span>
+
+    <input type="number" min="0" max="100" ng-model="addProductForm.count" placeholder="Count" required>
+    <input type="number" min="1" ng-model="addProductForm.cost" placeholder="Cost" required>
+
+    <select ng-model="addProductForm.group" ng-options="c.value for c in groups" required>
+        <option value="">-- choose group --</option>
+    </select>
+
+    <select ng-options="s.value for s in shippers" ng-model="addProductForm.shipper" required>
+        <option value="">-- choose shipper --</option>
+    </select>
+
+    <button class="btn btn-large btn-primary" type="submit">Add new product</button>
+</form>
