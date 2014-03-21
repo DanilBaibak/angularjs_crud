@@ -20,7 +20,6 @@
                             //since the Ajax call was made
                             if (currentValue === element.val()) {
                                 ngModel.$setValidity('unique', unique);
-                                console.log(unique);
                             }
                         }, function () {
                             //Probably want a more robust way to handle an error
