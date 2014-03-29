@@ -1,4 +1,4 @@
-angulat_crud
+An example of the AngularJS CRUD
 ============
 
 It's an example of single page application, that was created with AngularJS. It implements all main goals of CRUD. Application is working with REST API.
