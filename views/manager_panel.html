@@ -10,8 +10,9 @@
 
 <input type="text" ng-model='searchByName' placeholder="Searching by product's name">
 <button id="addNewProduct" class="btn btn-primary btn-block" ng-click="addNewProductPage()">Add new product</button>
-<table  class="table table-hover table-striped">
-    <thead>
+<div ng-show="products.length">
+    <table  class="table table-hover table-striped">
+        <thead>
         <tr>
             <th>Name</th>
             <th>
@@ -41,8 +42,8 @@
             <th width='25px'></th>
             <th width='25px'></th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <tr class="repeat-item" ng-repeat="product in products | orderBy:predicate:reverse | filter:group.text | filter:shipper.text | filter:searchByName">
             <td><span ng-bind="product.name"></span></td>
             <td><span ng-bind="product.count | number"></span></td>
@@ -52,5 +53,9 @@
             <td><i ng-click='editProduct(product.id)' class='icon-edit'></i></td>
             <td><i ng-click='removeProduct(product.id, product.name, $index)' class='icon-trash'></i></td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+<div ng-show="!products.length" class="alert alert-block">
+    There are no products. Please add some product at first.
+</div>
