@@ -5,21 +5,15 @@
      * @param $http service for create ajax request
      * @returns object factory
      */
-    var productsService = function($http) {
+    var productsService = function($http, apiUrl) {
         productsFactory = {};
-
-        /**
-         * URL of the server for set/get data
-         */
-//        productsFactory.apiUrl = 'http://test.com/';
-        productsFactory.apiUrl = '/';
 
         /**
          * Get list of the products
          * @returns object $http
          */
         productsFactory.getData = function () {
-            return $http.get(this.apiUrl + 'products');
+            return $http.get(apiUrl + 'products');
         };
 
         /**
@@ -27,7 +21,7 @@
          * @returns object $http
          */
         productsFactory.getGroups = function () {
-            return $http.get(this.apiUrl + 'group');
+            return $http.get(apiUrl + 'group');
         };
 
         /**
@@ -35,7 +29,7 @@
          * @returns object $http
          */
         productsFactory.getShippers = function () {
-            return $http.get(this.apiUrl + 'shnippers');
+            return $http.get(apiUrl + 'shippers');
         };
 
         /**
@@ -45,7 +39,7 @@
          * @returns object $http
          */
         productsFactory.addProduct = function (data) {
-            return $http.put(this.apiUrl + 'products', data);
+            return $http.put(apiUrl + 'products', data);
         }
 
         /**
@@ -56,7 +50,7 @@
         productsFactory.removeProduct = function (id) {
             return $http({
                 method: 'DELETE',
-                url: this.apiUrl + 'products',
+                url: apiUrl + 'products',
                 data: {id: id}
             });
         }
@@ -68,7 +62,7 @@
          * @returns object of the $http
          */
         productsFactory.getProduct = function(id) {
-            return $http.get(this.apiUrl + 'products?id=' + id);
+            return $http.get(apiUrl + 'products?id=' + id);
         }
 
         /**
@@ -80,7 +74,7 @@
         productsFactory.updateProduct = function(postData) {
             return $http({
                 method: 'POST',
-                url: this.apiUrl + 'products',
+                url: apiUrl + 'products',
                 data: postData
             });
 
@@ -94,7 +88,7 @@
          * @returns {*}
          */
         productsFactory.checkUniqueValue = function (property, value) {
-            return $http.get(this.apiUrl + 'check_unique_value?field=' + property + '&value=' + escape(value))
+            return $http.get(apiUrl + 'check_unique_value?field=' + property + '&value=' + escape(value))
                 .then(function (results) {
                     return results.data.status;
                 });
@@ -103,5 +97,5 @@
         return productsFactory;
     };
 
-    productsManager.productsApp.factory('productsService', ['$http', productsService]);
+    productsManager.productsApp.factory('productsService', ['$http', 'apiUrl', productsService]);
 }());

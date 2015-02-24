@@ -1,12 +1,12 @@
 var productsManager = {};
 productsManager.productsApp = {};
 
-(function() {
+(function () {
     //Create application
     productsManager.productsApp = angular.module('ngCrud', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
     //Configure routing
-    productsManager.productsApp.config(['$routeProvider', function($routeProvider) {
+    productsManager.productsApp.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/manager_panel.html',
@@ -25,5 +25,6 @@ productsManager.productsApp = {};
                 controller: 'Error'
             })
             .otherwise({redirectTo: '/404'});
-    }]);
+    }])
+        .constant('apiUrl', 'http://test.com/');
 })();
