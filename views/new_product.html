@@ -1,8 +1,9 @@
-<form name="LovelyForm" class="newProduct" ng-submit='addNewProduct()'>
+<form name="addProduct" class="newProduct" ng-submit='addProduct.$valid && addNewProduct()'>
     <input type="text" ng-model="addProductForm.name" id="productName" name="name" placeholder="Product's name" required
         data-unique="{property: 'name'}"
     >
-    <span class="errorMessage" ng-show="LovelyForm.name.$dirty && LovelyForm.name.$error.unique">
+
+    <span class="errorMessage" ng-show="addProduct.name.$dirty && addProduct.name.$error.unique">
         The product with this name has already existed!
     </span>
 
