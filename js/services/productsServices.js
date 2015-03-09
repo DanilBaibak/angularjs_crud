@@ -21,7 +21,7 @@
          * @returns object $http
          */
         productsFactory.getGroups = function () {
-            return $http.get(apiUrl + 'group');
+            return $http.get(apiUrl + 'groups');
         };
 
         /**
@@ -39,7 +39,7 @@
          * @returns object $http
          */
         productsFactory.addProduct = function (data) {
-            return $http.put(apiUrl + 'products', data);
+            return $http.post(apiUrl + 'products', data);
         }
 
         /**
@@ -50,8 +50,7 @@
         productsFactory.removeProduct = function (id) {
             return $http({
                 method: 'DELETE',
-                url: apiUrl + 'products',
-                data: {id: id}
+                url: apiUrl + 'product/' + id
             });
         }
 
@@ -62,7 +61,7 @@
          * @returns object of the $http
          */
         productsFactory.getProduct = function(id) {
-            return $http.get(apiUrl + 'products?id=' + id);
+            return $http.get(apiUrl + 'product/' + id);
         }
 
         /**
@@ -72,12 +71,7 @@
          * @returns object of the $http
          */
         productsFactory.updateProduct = function(postData) {
-            return $http({
-                method: 'POST',
-                url: apiUrl + 'products',
-                data: postData
-            });
-
+            return $http.put(apiUrl + 'product/'+ postData['id'], postData);
         }
 
         /**
@@ -88,7 +82,11 @@
          * @returns {*}
          */
         productsFactory.checkUniqueValue = function (property, value) {
-            return $http.get(apiUrl + 'check_unique_value?field=' + property + '&value=' + escape(value))
+            return $http({
+                url: apiUrl + 'product/check_unique_value',
+                method: 'GET',
+                params: {field: 'name', value: escape(value)}
+            })
                 .then(function (results) {
                     return results.data.status;
                 });
