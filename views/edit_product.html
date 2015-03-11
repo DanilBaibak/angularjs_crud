@@ -1,5 +1,5 @@
-<form name="LovelyForm" class="newProduct" ng-submit='editProduct()'>
-    <input type="hidden" ng-model="editProductForm.id" placeholder="Product's name" required>
+<form class="newProduct" ng-submit='editProduct()'>
+    <input type="hidden" ng-model="editProductForm.id" required>
     <input type="text" ng-model="editProductForm.name" placeholder="Product's name" required>
     <input type="number" min="0" max="100" ng-model="editProductForm.count" placeholder="Count" required>
     <input type="number" min="1" ng-model="editProductForm.cost" placeholder="Cost" required>

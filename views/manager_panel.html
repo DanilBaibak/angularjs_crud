@@ -51,7 +51,7 @@
             <td><span ng-bind="product.group"></span></td>
             <td><span ng-bind="product.shipper"></span></td>
             <td><i ng-click='editProduct(product.id)' class='icon-edit'></i></td>
-            <td><i ng-click='removeProduct(product.id, product.name, $index)' class='icon-trash'></i></td>
+            <td><i ng-click='removeProduct(product.id, product.name, product)' class='icon-trash'></i></td>
         </tr>
         </tbody>
     </table>

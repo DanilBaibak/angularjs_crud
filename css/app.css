@@ -117,3 +117,10 @@ th a:hover {
 .icon-trash, .icon-edit {
     cursor: pointer;
 }
+
+.errorMessage {
+    color: red;
+    display: inline-block;
+    overflow: hidden;
+    margin-top: -10px;
+}

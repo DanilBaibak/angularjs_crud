@@ -89,7 +89,7 @@
                         .success(function(response) {
                             //if product was successful removed from DB, remove it from scope
                             if (response) {
-                                $scope.products.splice(index, 1);
+                                $scope.products.splice($scope.products.indexOf(index), 1);
                             } else {
                                 var modalOptions = {
                                     closeButtonText: 'Ok',
