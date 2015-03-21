@@ -10,24 +10,24 @@ Project implements main functionality of the TODO application.</p>
 
 <p>Get code:</p>
 
-<div style="background:#eee; border:1px solid #ccc; padding:5px 10px">mkdir ng_todo&nbsp;&amp;&amp;&nbsp;git clone&nbsp;https://github.com/DanilBaibak/angularjs_crud.git ng_todo&nbsp;</div>
+<code>mkdir ng_todo&nbsp;&amp;&amp;&nbsp;git clone&nbsp;https://github.com/DanilBaibak/angularjs_crud.git ng_todo&nbsp;</code>
 
 <p>Next you need install&nbsp;<a href="http://bower.io/" target="_blank">Bower</a>:</p>
 
-<div style="background:#eee; border:1px solid #ccc; padding:5px 10px">npm install -g bower</div>
+<code>npm install -g bower</code>
 
 <p>Install all source and necessary libraries :</p>
 
-<div style="background:#eee; border:1px solid #ccc; padding:5px 10px">bower install</div>
+<code>bower install</code>
 
 <p>Install <a href="http://karma-runner.github.io/" target="_blank">Karma</a> for testing:</p>
 
-<div style="background:#eee; border:1px solid #ccc; padding:5px 10px">npm install -g karma-cli</div>
+<code>npm install -g karma-cli</code>
 
 <p>Edit configuration of the your server REST API. Open file <strong><em>ng_todo/js/app.js</em></strong>&nbsp;and change constant <em><strong>apiUrl</strong></em> to url of the your backend part. Example of my&nbsp;RESTful API you can find&nbsp;<a href="https://github.com/DanilBaibak/rest_api" target="_blank">here</a></p>
 
-<div style="background:#eee; border:1px solid #ccc; padding:5px 10px">.constant(&#39;apiUrl&#39;, &#39;http://rest_my.work/&#39;)</div>
+<code>.constant(&#39;apiUrl&#39;, &#39;http://rest_my.work/&#39;)</code>
 
 <p>Run tests:</p>
 
-<div style="background:#eee; border:1px solid #ccc; padding:5px 10px">karma&nbsp;start karma.conf.js</div>
+<code>karma&nbsp;start karma.conf.js</code>
